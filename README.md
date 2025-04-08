@@ -7,7 +7,7 @@ Based on my Netflix Auto Fullscreen add-on.
 
 ## Preferences
 
-There is a preference to enter fullscreen only one time, when you play the title at beginning, or whenever you unpause a title while in a windowed player.  The default is to always enter fullscreen.
+There is a preference to enter fullscreen only one time, when you start playing a new title, or whenever you unpause the title while in a windowed player.  The default is to always enter fullscreen.
 
 ## Technicalities
 
