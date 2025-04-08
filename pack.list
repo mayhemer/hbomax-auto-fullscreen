@@ -1,0 +1,9 @@
+manifest.json
+src/browser-polyfill.js
+src/browser-polyfill.js.map
+src/MAX-auto-fs.js
+options/options.css
+options/options.html
+options/options.js
+README.md
+TERMS.md
