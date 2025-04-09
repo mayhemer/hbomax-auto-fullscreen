@@ -60,7 +60,7 @@
 
     try {
       while (true) {
-        const player_screen = app_root.querySelector('div#layer-root-player-screen');
+        const player_screen = await until_element(app_root, 'div#layer-root-player-screen');
         
         log(id, `started observing for PlayerRootContainer element`);
         const player_root = await until_element(player_screen, 'div[class^="PlayerRootContainer-"]');
