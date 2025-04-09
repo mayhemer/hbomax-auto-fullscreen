@@ -1,7 +1,7 @@
 manifest.json
 src/browser-polyfill.js
 src/browser-polyfill.js.map
-src/MAX-auto-fs.js
+src/max-auto-fs.js
 options/options.css
 options/options.html
 options/options.js
