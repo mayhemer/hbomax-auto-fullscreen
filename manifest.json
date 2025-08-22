@@ -7,7 +7,7 @@
 
   "content_scripts": [
     {
-      "matches": ["https://play.max.com/*"],
+      "matches": ["https://play.max.com/*", "https://play.hbomax.com/*"],
       "js": ["src/browser-polyfill.js", "src/max-auto-fs.js"]
     }
   ],
