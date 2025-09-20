@@ -1,7 +1,7 @@
 {
-  "description": "Automatically enters the fullscreen mode when playing a title",
+  "description": "Automatically enters the fullscreen mode when playing a title on HBO Max",
   "manifest_version": 3,
-  "name": "MAX Auto Fullscreen",
+  "name": "HBO Max Auto Fullscreen",
   "version": "1.0.2",
   "permissions": ["storage"],
 
