@@ -48,7 +48,11 @@
   const until_element = (root, selector) => observe_for(root, root => root.querySelector(selector));
   const while_element = (root, selector) => observe_for(root, root => !root.querySelector(selector));
 
+  let guard_counter = 0;
+
   const guard_for_fullscreen = async (id) => {
+    log(id, `entered`);
+
     reject_running_guard && reject_running_guard();
 
     const request_fs = player_root => {
@@ -57,32 +61,40 @@
         player_root.requestFullscreen();
       }
     };
+    const monitor_fs = player_root => {
+      player_root.addEventListener("fullscreenchange", _ => {
+        if (!document.fullscreenElement) {
+          guard_for_fullscreen(++guard_counter);
+        }
+      });
+    };
 
     try {
       while (true) {
+        log(id, `started observing for layer-root-player-screen element`);
         const player_screen = await until_element(app_root, 'div#layer-root-player-screen');
-        
+
         log(id, `started observing for PlayerRootContainer element`);
         const player_root = await until_element(player_screen, 'div[class^="PlayerRootContainer-"]');
         request_fs(player_root);
-        
+        monitor_fs(player_root);
+
         const video_element = await until_element(player_root, 'video');
         video_element.addEventListener('play', _ => {
           if (config.fs_on_short_play == "true") {
             request_fs(player_root);
           }
         });
-        
+
         log(id, `waiting for player to be removed again`)
         await while_element(player_screen, 'div[class^="PlayerRootContainer-"]');
       }
-    } catch(ex) {
+    } catch (ex) {
       ex && err(id, ex);
     }
     log(id, `exited`);
   };
 
-  let guard_counter = 0;
   window.addEventListener("popstate", _ => guard_for_fullscreen(++guard_counter));
   guard_for_fullscreen(++guard_counter);
 })();

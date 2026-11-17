@@ -2,12 +2,12 @@
   "description": "Automatically enters the fullscreen mode when playing a title on HBO Max",
   "manifest_version": 3,
   "name": "HBO Max Auto Fullscreen",
-  "version": "1.0.3",
+  "version": "1.0.5",
   "permissions": ["storage"],
 
   "content_scripts": [
     {
-      "matches": ["https://play.max.com/*", "https://play.hbomax.com/*"],
+      "matches": ["https://play.max.com/*", "https://play.hbomax.com/*", "https://www.hbomax.com/*"],
       "js": ["src/browser-polyfill.js", "src/max-auto-fs.js"]
     }
   ],
